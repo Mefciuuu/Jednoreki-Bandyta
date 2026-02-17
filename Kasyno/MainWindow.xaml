@@ -1,0 +1,142 @@
+﻿<Window x:Class="SlotMachine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Jednoręki Bandyta"
+        WindowStartupLocation="CenterScreen"
+        Background="#1b263b">
+
+    <Viewbox Stretch="Uniform">
+
+        <Grid Width="800" Height="1000">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#243447" Offset="0"/>
+                    <GradientStop Color="#1b263b" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Image Source="Images/JednorekiBandyta.png"
+                   Stretch="Fill"/>
+
+            <Canvas>
+
+                <Canvas.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border"
+                                            CornerRadius="10"
+                                            Padding="6">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                <GradientStop Color="#3a6073" Offset="0"/>
+                                                <GradientStop Color="#16222a" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                        <GradientStop Color="#4b79a1" Offset="0"/>
+                                                        <GradientStop Color="#283e51" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="border"
+                                                    Property="Opacity"
+                                                    Value="0.8"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Canvas.Resources>
+
+                <Image x:Name="Beben1"
+                       Width="79"
+                       Height="83"
+                       Canvas.Left="216"
+                       Canvas.Top="383"/>
+
+                <Image x:Name="Beben2"
+                       Width="79"
+                       Height="83"
+                       Canvas.Left="351"
+                       Canvas.Top="388"/>
+
+                <Image x:Name="Beben3"
+                       Width="79"
+                       Height="83"
+                       Canvas.Left="490"
+                       Canvas.Top="385"/>
+
+                <TextBlock x:Name="BalansText"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Canvas.Left="300"
+                           Canvas.Top="540"/>
+
+                <TextBlock Text="Stawka:"
+                           FontSize="18"
+                           Foreground="White"
+                           Canvas.Left="300"
+                           Canvas.Top="662"/>
+
+                <TextBox x:Name="StawkaBox"
+                         Width="100"
+                         Height="30"
+                         Text="10"
+                         Canvas.Left="366"
+                         Canvas.Top="662"
+                         Background="#2c3e50"
+                         Foreground="White"
+                         BorderBrush="#4b79a1"/>
+
+                <TextBlock x:Name="KomunikatText"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="LightGreen"
+                           TextAlignment="Center"
+                           Width="500"
+                           TextWrapping="Wrap"
+                           Canvas.Left="150"
+                           Canvas.Top="304"/>
+
+                <Button x:Name="PrzyciskZakrec"
+                        Content="Zakręć"
+                        Width="150"
+                        Height="50"
+                        FontSize="18"
+                        Canvas.Left="316"
+                        Canvas.Top="602"
+                        Click="Spin_Click"/>
+
+                <Button x:Name="PrzyciskReset"
+                        Content="Zresetuj"
+                        Width="150"
+                        Height="40"
+                        Canvas.Left="316"
+                        Canvas.Top="697"
+                        Click="Reset_Click"/>
+
+            </Canvas>
+
+        </Grid>
+
+    </Viewbox>
+
+</Window>
